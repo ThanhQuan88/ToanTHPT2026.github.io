@@ -387,3 +387,98 @@ button:hover {
       0 0 10px rgba(255, 150, 200, 0.2);
   }
 }
+
+@media (max-width: 1024px) {
+
+.login-box{
+  width: 80%;
+  padding: 35px;
+}
+
+.card{
+  width: 80%;
+  height: auto;
+  padding: 25px;
+}
+
+.card img{
+  width:140px;
+  height:140px;
+}
+
+}
+
+@media (max-width:480px){
+
+h1{
+  font-size:18px;
+}
+
+.card img{
+  width:100px;
+  height:100px;
+}
+
+.name{
+  font-size:18px;
+}
+
+.message{
+  font-size:14px;
+}
+
+.footer{
+  font-size:14px;
+}
+
+}
+
+@media (max-width: 768px){
+
+body{
+  padding:20px;
+}
+
+.login-box{
+  width: 95%;
+  padding: 30px 20px;
+}
+
+h1{
+  font-size:20px;
+}
+
+input{
+  width: 90%;
+}
+
+button{
+  width: 70%;
+}
+
+.card{
+  width: 95%;
+  height:auto;
+  padding:25px 15px;
+}
+
+.card-title{
+  font-size:18px;
+}
+
+.name{
+  font-size:20px;
+}
+
+.card img{
+  width:120px;
+  height:120px;
+}
+
+.message{
+  font-size:15px;
+}
+
+}
+
+
