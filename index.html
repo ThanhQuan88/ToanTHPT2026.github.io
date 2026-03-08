@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TÀI LIỆU TIN HỌC 12</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Trang nhập mật khẩu -->
+<div class="stars"></div>
+
+<div class="login-box" id="login">
+  <h1>TÀI LIỆU TIN HỌC 12<br />ÔN THI CUỐI HỌC KỲ II</h1>
+  <p>Nhập số thứ tự theo danh sách lớp của bạn vào ô bên dưới</p>
+  <p><b>Lưu ý:</b> Nhập đúng mới mở được tài liệu</p>
+
+  <input type="number" id="password" placeholder="Ví dụ: 1, 2, 3..." />
+  <br />
+
+  <button onclick="openCard()">Mở tài liệu</button>
+</div>
+
+    <!-- Card -->
+
+    <div class="card" id="card">
+      <div class="card-title">
+        NGÀY QUỐC TẾ PHỤ NỮ<br />
+        HAPPY WOMEN'S DAY
+      </div>
+
+      <img id="avatar" />
+
+      <div class="name" id="name"></div>
+
+      <div class="birthday" id="birthday"></div>
+
+      <div class="message" id="message"></div>
+
+      <div class="footer">Chúc bạn có một ngày 8/3 thật hạnh phúc 💐</div>
+    </div>
+
+    <script>
+      /* DANH SÁCH LỚP */
+
+      const students = {
+        3: {
+          name: "Hồ Thụy Lan Anh",
+          birthday: "09/09/2008",
+          img: "Lan Anh.jpg",
+          message:
+            "Chúc bạn 8/3 thật vui, luôn xinh xắn, học giỏi và ngày càng tỏa sáng nhé! 🌸",
+        },
+
+        4: {
+          name: "Nguyễn Ngọc Thụy Bảo",
+          birthday: "07/09/2008",
+          img: "Thụy Bảo.jpg",
+          message:
+            "Chúc bạn một ngày 8/3 tràn đầy niềm vui, nụ cười luôn rạng rỡ như ánh nắng.",
+        },
+
+        5: {
+          name: "Nguyễn Ngọc Kim Cương",
+          birthday: "22/12/2008",
+          img: "Kim Cương.jpg",
+          message: "8/3 chúc bạn luôn xinh đẹp, mạnh mẽ và đạt được mọi ước mơ của mình.",
+        },
+        6: {
+          name: "Nguyễn Thị Thu Dung",
+          birthday: "31/12/2008",
+          img: "Thu Dung.jpg",
+          message: "Chúc cô bạn 2008 của chúng ta luôn vui vẻ, học tốt và ngày càng đáng yêu hơn.",
+        },
+        9: {
+          name: "Đặng Thị Huỳnh Giao",
+          birthday: "29/04/2008",
+          img: "Huỳnh Giao.jpg",
+          message: "Chúc bạn 8/3 thật hạnh phúc, luôn giữ được nụ cười dễ thương của mình.",
+        },
+        10: {
+          name: "Lê Thị Hồng Hạnh",
+          birthday: "01/01/2008",
+          img: "Hồng Hạnh.jpg",
+          message: "8/3 chúc bạn luôn là phiên bản tuyệt vời nhất của chính mình.",
+        },
+        11: {
+          name: "Nguyễn Thị Hợp",
+          birthday: "31/5/2008",
+          img: "Thị Hợp.jpg",
+          message: "Chúc bạn một ngày 8/3 thật ngọt ngào, giống như chính nụ cười của bạn vậy.",
+        },
+        12: {
+          name: "Nguyễn Thị Thúy Huỳnh",
+          birthday: "25/11/2008",
+          img: "Thúy Huỳnh.jpg",
+          message: "Chúc bạn luôn tỏa sáng theo cách riêng của mình. 🌷",
+        },
+        15: {
+          name: "Võ Ngọc Lam",
+          birthday: "01/08/2008",
+          img: "Ngọc Lam.jpg",
+          message: "8/3 chúc bạn luôn vui vẻ, học tập thật tốt và đạt được nhiều thành công.",
+        },
+        16: {
+          name: "Đoàn Thúy Liên",
+          birthday: "20/10/2008",
+          img: "Thúy Liên.jpg",
+          message: "Chúc cô gái 2008 luôn xinh đẹp, tự tin và thật nhiều may mắn.",
+        },
+        17: {
+          name: "Phan Thị Hoàng Minh",
+          birthday: "08/09/2008",
+          img: "Hoàng Minh.jpg",
+          message: "Chúc bạn 8/3 tràn ngập niềm vui và những điều tốt đẹp nhất.",
+        },
+        18: {
+          name: "Phùng Huỳnh Thu Ngân",
+          birthday: "08/10/2008",
+          img: "Thu Ngân.jpg",
+          message: "Chúc bạn luôn giữ được sự hồn nhiên, đáng yêu của tuổi học trò.",
+        },
+        19: {
+          name: "Nguyễn Thị Hồng Nghi",
+          birthday: "24/08/2008",
+          img: "Hồng Nghi.jpg",
+          message: "8/3 chúc bạn luôn có thật nhiều năng lượng tích cực mỗi ngày.",
+        },
+        20: {
+          name: "Trần Liêu Diễm Ngọc",
+          birthday: "12/07/2008",
+          img: "Diễm NGọc.jpg",
+          message: "Chúc bạn học thật tốt và luôn đạt được mục tiêu mình mong muốn.",
+        },
+        21: {
+          name: "Trần Phạm Bảo Ngọc",
+          birthday: "09/10/2008",
+          img: "Bảo Ngọc.jpg",
+          message: "8/3 chúc bạn luôn vui vẻ và được thật nhiều người yêu quý.",
+        },
+        22: {
+          name: "Lê Phương Nhi",
+          birthday: "20/02/2008",
+          img: "Phương Nhi.jpg",
+          message: "Chúc bạn luôn rạng rỡ như những đóa hoa trong ngày 8/3.",
+        },
+        23: {
+          name: "Nguyễn Yến Nhi",
+          birthday: "11/08/2008",
+          img: "Yến Nhi.jpg",
+          message: "Chúc bạn một ngày 8/3 thật ý nghĩa và đầy tiếng cười.",
+        },
+        24: {
+          name: "Trần Thị Hồng Nhung",
+          birthday: "29/07/2008",
+          img: "Hồng Nhung.jpg",
+          message: "Chúc cô bạn cùng tuổi luôn tự tin, mạnh mẽ và thành công. Có thật nhiều sức khỏe nha",
+        },
+        28: {
+          name: "Đặng Thị Kim Quyên",
+          birthday: "12/02/2008",
+          img: "Kim Quyên.jpg",
+          message: "8/3 chúc bạn luôn gặp nhiều điều may mắn trong học tập và cuộc sống.",
+        },
+        29: {
+          name: "Hà Huỳnh Liên Sương",
+          birthday: "20/02/2008",
+          img: "Liên Sương.jpg",
+          message: "Chúc bạn luôn giữ được trái tim ấm áp và sự tốt bụng của mình.",
+        },
+        33: {
+          name: "Nguyễn Nhựt Thành",
+          birthday: "07/04/2008",
+          img: "Nhựt Thành.jpg",
+          message: "Chúc bạn 8/3 thật vui và luôn tỏa sáng trong mắt mọi người.",
+        },
+        34: {
+          name: "Lê Ngọc Thi",
+          birthday: "05/04/2008",
+          img: "Ngọc Thi.jpg",
+          message: "Chúc bạn luôn xinh đẹp theo cách rất riêng của mình.",
+        },
+        37: {
+          name: "Nguyễn Lê Cẩm Tiên",
+          birthday: "26/11/2008",
+          img: "Cẩm Tiên.jpg",
+          message: "8/3 chúc bạn luôn hạnh phúc và đạt nhiều thành tích tốt trong học tập.",
+        },
+        38: {
+          name: "Nguyễn Thị Kiều Trang",
+          birthday: "12/09/2008",
+          img: "Kiều Trang.jpg",
+          message: "Chúc bạn luôn có thật nhiều niềm vui bên bạn bè và gia đình.",
+        },
+        39: {
+          name: "Nguyễn Thị Bích Trâm",
+          birthday: "06/05/2008",
+          img: "Bích Trâm.jpg",
+          message: "Chúc bạn một ngày 8/3 thật đặc biệt và đáng nhớ.",
+        },
+        40: {
+          name: "Bùi Nguyễn Linh Vân",
+          birthday: "02/03/2008",
+          img: "Linh Vân.jpg",
+          message: "Chúc bạn luôn tự tin theo đuổi ước mơ của mình.",
+        },
+        41: {
+          name: "Đoàn Vũ Yến Vy",
+          birthday: "26/03/2008",
+          img: "Yến Vy.jpg",
+          message: "8/3 chúc bạn luôn mạnh mẽ và không ngừng cố gắng.",
+        },
+        42: {
+          name: "Đỗ Tường Vy",
+          birthday: "24/07/2008",
+          img: "Tường Vy.jpg",
+          message: "Chúc cô gái 2008 luôn rạng rỡ và đầy năng lượng tích cực.",
+        },
+        43: {
+          name: "Lê Huỳnh Ngọc Xoàn",
+          birthday: "07/03/2008",
+          img: "Ngọc Xoàn.jpg",
+          message: "Chúc bạn luôn được yêu thương và trân trọng.",
+        },
+        44: {
+          name: "Lê Thị Như Ý",
+          birthday: "29/10/2008",
+          img: "Như Ý.jpg",
+          message: "Chúc bạn một ngày 8/3 thật hạnh phúc, luôn xinh đẹp, luôn vui vẻ và luôn tỏa sáng như chính con người bạn.",
+        },
+      };
+
+      /* MỞ CARD */
+
+      function openCard() {
+        let pass = document.getElementById("password").value;
+
+        if (students[pass]) {
+          document.getElementById("login").style.display = "none";
+
+          /* khi mở card đổi nền sang màu hồng */
+
+document.body.style.background =
+"linear-gradient(135deg,#ffe6f0,#f3e6ff)";
+
+let card = document.getElementById("card");
+card.style.display = "block";
+card.classList.add("card-show");
+
+createSakura();
+
+          document.getElementById("avatar").src = students[pass].img;
+          document.getElementById("name").innerText =
+            "Họ và tên: " + students[pass].name;
+          document.getElementById("birthday").innerText =
+            "Sinh ngày: " + students[pass].birthday;
+          document.getElementById("message").innerText = students[pass].message;
+        } else {
+          alert("Không có số thứ tự này trong danh sách!");
+        }
+        function createSakura(){
+
+for(let i=0;i<25;i++){
+
+let sakura=document.createElement("div");
+
+sakura.innerHTML="🌸";
+
+sakura.className="sakura";
+
+sakura.style.left=Math.random()*100+"vw";
+
+sakura.style.fontSize=(14+Math.random()*12)+"px";
+
+sakura.style.animationDuration=(6+Math.random()*6)+"s";
+
+document.body.appendChild(sakura);
+
+}
+
+}
+      }
+    </script>
+  </body>
+</html>
